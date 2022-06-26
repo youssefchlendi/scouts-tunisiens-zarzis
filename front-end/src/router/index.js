@@ -4,6 +4,7 @@ import Home from "../views/HomeView.vue";
 import Login from "./routes/auth/login";
 import Register from "./routes/auth/register";
 import Logout from "./routes/auth/logout";
+import ManageLeaders from "./routes/Admin/manageLeaders";
 Vue.use(VueRouter);
 
 const routes = [
@@ -24,6 +25,7 @@ const routes = [
   ...Login,
   ...Register,
   ...Logout,
+  ...ManageLeaders,
 ];
 
 const router = new VueRouter({

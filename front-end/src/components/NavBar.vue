@@ -1,6 +1,6 @@
 <template>
   <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
+      <router-link to="/" class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -18,8 +18,8 @@
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
         />
-      </div>
-
+      </router-link>
+      <router-link class="btn btn-warning" to="manageLeaders">manage leaders</router-link>
       <v-spacer></v-spacer>
       <div class="text-center">
         <v-menu open-on-hover top offset-y offset-x offset-overflow>
