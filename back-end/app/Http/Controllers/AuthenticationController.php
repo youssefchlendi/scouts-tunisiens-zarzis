@@ -17,9 +17,9 @@ class AuthenticationController extends Controller
         $user = User::create($input);
         $role = Role::find($request->role);
         if($request->troupe){
-            $user->roles()->attach($role,['troupe_id'=>$request->troupe]);
+            $user->roless()->attach($role,['troupe_id'=>$request->troupe]);
         }else{
-            $user->roles()->attach($role);
+            $user->roless()->attach($role);
         }
 
         return response()->json([

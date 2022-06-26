@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\LeaderController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\test;
 use App\Http\Controllers\TroupeController;
@@ -19,16 +20,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/profile', function(Request $request) {
+    Route::get('/profile', function (Request $request) {
         return auth()->user();
     });
     Route::post('/sign-out', [AuthenticationController::class, 'logout']);
-    Route::get('/test',[test::class,'test']);
+    Route::get('/test', [test::class, 'test']);
+
+    Route::apiResource('leaders',LeaderController::class);
+    Route::group(['prefix' => '/leaders'], function () {
+    });
 });
 
 Route::post('/login', [AuthenticationController::class, 'login']);
 Route::post('/register', [AuthenticationController::class, 'register']);
-Route::get('/unique/{id}',[AuthenticationController::class, 'unique']);
+Route::get('/unique/{id}', [AuthenticationController::class, 'unique']);
 
 Route::group(['prefix' => '/roles'], function () {
     Route::get('/', [RoleController::class, 'index']);
