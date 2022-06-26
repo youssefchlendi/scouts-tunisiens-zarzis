@@ -49,6 +49,12 @@ class User extends Authenticatable
     ];
 
     public function roles(){
+        return $this->hasMany(RoleUser::class);
+        // return $this->belongsToMany(Role::class)->using(RoleUser::class)->with('troupe');
+        // return $this->hasManyThrough(Troupe::class,RoleUser::class,'troupe_id','id');
+    }
+
+    public function roless(){
         return $this->belongsToMany(Role::class);
     }
 }
