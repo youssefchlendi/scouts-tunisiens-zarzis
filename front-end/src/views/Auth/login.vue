@@ -98,7 +98,7 @@ export default {
     ...mapActions(["login"]),
     Login() {
       this.$v.$touch();
-      if (!this.$v.$anyError) {
+      if (!this.$v.$invalid) {
         this.login({ email: this.email, password: this.password }).then(() => {
           if (this.$store.getters.authStatus == 2) {
             this.alert.dismissCountDown = 10;
